@@ -21,7 +21,7 @@ from string import Template
 import requests
 
 from .record import PIDRecord
-from nmr_FAIR_DOs.utils import fetch_multiple
+from .utils import fetch_multiple
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
