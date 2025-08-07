@@ -1,5 +1,5 @@
 [project]
-name = "openapi_client"
+name = "typid_client"
 version = "0.2.0"
 description = "API client for Typed PID Maker – Create, resolve and modify PIDs with typed constraints, e.g. for FAIR DOs."
 authors = [
@@ -41,6 +41,7 @@ extension-pkg-whitelist = "pydantic"
 
 [tool.mypy]
 files = [
+  "typid_client",
   "openapi_client",
   "test",  # auto-generated tests
   #"tests", # hand-written tests
