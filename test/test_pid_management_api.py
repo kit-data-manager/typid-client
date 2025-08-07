@@ -16,6 +16,7 @@
 import unittest
 
 from openapi_client.api.pid_management_api import PIDManagementApi
+from openapi_client.highlevel import SimpleRecord
 
 
 class TestPIDManagementApi(unittest.TestCase):
@@ -32,7 +33,22 @@ class TestPIDManagementApi(unittest.TestCase):
 
         Create a new PID record
         """
-        pass
+        input = SimpleRecord.from_dict({
+            "record": [
+                { "key": "21.T11148/c692273deb2772da307f", "value": "1.0.0" }
+            ]
+        })
+
+        assert input is not None, "Input should not be None"
+
+        result = self.api.create_pid(
+            pid_record=input.to_record()
+        )
+
+        print("Created:", result.to_json())
+        assert result is not None, "Result should not be None"
+        assert result.pid is not None, "PID should be set in the result"
+        assert "21.T11148/c692273deb2772da307f" in result.to_str()
 
     def test_create_pids(self) -> None:
         """Test case for create_pids
