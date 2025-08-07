@@ -1,13 +1,13 @@
 [project]
-name = "openapi_client"
-version = "1.0.0"
-description = "Typed PID Maker - RESTful API"
+name = "typid_client"
+version = "0.2.0"
+description = "API client for Typed PID Maker – Create, resolve and modify PIDs with typed constraints, e.g. for FAIR DOs."
 authors = [
   {name = "KIT Data Manager Support",email = "support@datamanager.kit.edu"},
 ]
 license = "Apache 2.0"
 readme = "README.md"
-keywords = ["OpenAPI", "OpenAPI-Generator", "Typed PID Maker - RESTful API"]
+keywords = ["FAIR DO", "FAIR Digital Object", "PID", "Persistent Identifier", "Typed PIDs"]
 requires-python = ">=3.9"
 
 dependencies = [
