@@ -10,6 +10,8 @@ class SimpleRecord(SimplePidRecord):
         if self.record:
             for pair in self.record:
                 key = pair.key
+                if not key:
+                    continue
                 if key not in entries:
                     entries[key] = []
                 entries[key].append(PIDRecordEntry(key=key, value=pair.value))
