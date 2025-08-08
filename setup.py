@@ -21,7 +21,7 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "pytypid-generated-client"
+NAME = "pytypid"
 VERSION = "0.2.0"
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [
@@ -47,5 +47,8 @@ setup(
     long_description="""\
     The Typed PID Maker is a service for creating, updating, obtaining and validating PID record information using Kernel Information Profiles, as defined by the Research Data Alliance.
     """,  # noqa: E501
-    package_data={"pytypid_generated_client": ["py.typed"]},
+    package_data={
+        "pytypid": ["py.typed"],
+        "pytypid_generated_client": ["py.typed"],
+    },
 )

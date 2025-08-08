@@ -1,5 +1,5 @@
 [project]
-name = "pytypid_generated_client"
+name = "pytypid"
 version = "0.2.0"
 description = "Typed PID Maker - RESTful API"
 authors = [
@@ -41,9 +41,10 @@ extension-pkg-whitelist = "pydantic"
 
 [tool.mypy]
 files = [
-  "pytypid_generated_client",
+  "pytypid",  # the main package
+  "pytypid_generated_client", # the auto-generated client package
   #"test",  # auto-generated tests
-  "tests", # hand-written tests
+  #"tests", # hand-written tests
 ]
 # TODO: enable "strict" once all these individual checks are passing
 # strict = true
@@ -93,3 +94,44 @@ disallow_incomplete_defs = true
 disallow_untyped_defs = true
 no_implicit_reexport = true
 warn_return_any = true
+
+[[tool.mypy.overrides]]
+module = [
+  "pytypid.*"
+]
+
+# We can't set strict directly due to https://github.com/python/mypy/issues/11401
+# We need to set the attributes manually
+# attribute list from: https://mypy.readthedocs.io/en/stable/existing_code.html#introduce-stricter-options
+
+# Start off with these
+#warn_unused_configs = true <-- can only be set globally
+#warn_redundant_casts = true <-- can only be set globally
+warn_unused_ignores = true
+
+# Getting this passing should be easy
+strict_equality = true
+
+# Strongly recommend enabling this one as soon as you can
+check_untyped_defs = true
+
+# These shouldn't be too much additional work, but may be tricky to
+# get passing if you use a lot of untyped libraries
+disallow_subclassing_any = true
+disallow_untyped_decorators = true
+disallow_any_generics = true
+
+# These next few are various gradations of forcing use of type annotations
+disallow_untyped_calls = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+
+# This one isn't too hard to get passing, but return on investment is lower
+no_implicit_reexport = true
+
+# This one can be tricky to get passing if you use a lot of untyped libraries
+warn_return_any = true
+
+# This one is a catch-all flag for the rest of strict checks that are technically
+# correct but may not be practical
+extra_checks = true
