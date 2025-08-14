@@ -2,7 +2,6 @@
 
 import unittest
 
-from typing import override
 from test.test_pid_management_api import TestPIDManagementApi as BaseTestPIDManagementApi
 
 from pytypid import SimpleRecord, BatchRecordResponse
@@ -11,7 +10,6 @@ from pytypid import SimpleRecord, BatchRecordResponse
 class TestPIDManagementApi(BaseTestPIDManagementApi):
     """PIDManagementApi unit test stubs"""
 
-    @override
     def test_create_pid(self) -> None:
         """Test case for create_pid
 
@@ -34,7 +32,6 @@ class TestPIDManagementApi(BaseTestPIDManagementApi):
         assert result.pid is not None, "PID should be set in the result"
         assert "21.T11148/c692273deb2772da307f" in result.to_str()
 
-    @override
     def test_create_pids(self) -> None:
         """Test case for create_pids
 
