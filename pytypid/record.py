@@ -1,7 +1,7 @@
 from typing import Dict, List
 
-from pytypid_generated_client.models import SimplePidRecord, SimplePair
-from pytypid_generated_client.models import PIDRecord, PIDRecordEntry
+from pytypid_generated_client.models import PIDRecord, PIDRecordEntry, SimplePidRecord
+
 
 class SimpleRecord(SimplePidRecord):
     def to_record(self) -> PIDRecord:
@@ -16,4 +16,3 @@ class SimpleRecord(SimplePidRecord):
                     entries[key] = []
                 entries[key].append(PIDRecordEntry(key=key, value=pair.value))
         return PIDRecord(pid=self.pid, entries=entries)
-
