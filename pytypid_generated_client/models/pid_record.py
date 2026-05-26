@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pytypid_generated_client.models.pid_record_entry import PIDRecordEntry
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PIDRecord(BaseModel):
     """
@@ -34,7 +35,8 @@ class PIDRecord(BaseModel):
     __properties: ClassVar[List[str]] = ["pid", "entries"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,8 +48,7 @@ class PIDRecord(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -101,14 +102,12 @@ class PIDRecord(BaseModel):
 
         _obj = cls.model_validate({
             "pid": obj.get("pid"),
-            "entries": dict(
-                (_k,
-                        [PIDRecordEntry.from_dict(_item) for _item in _v]
-                        if _v is not None
-                        else None
-                )
-                for _k, _v in obj.get("entries", {}).items()
-            )
+            "entries": {
+                _k: [PIDRecordEntry.from_dict(_item) for _item in _v] if _v is not None else None
+                for _k, _v in obj["entries"].items()
+            }
+            if obj.get("entries") is not None
+            else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

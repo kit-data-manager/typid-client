@@ -1,6 +1,10 @@
 # bash generate-code.sh generated this repository!
 echo ${PWD}
-docker run --rm -v ${PWD}:/local docker.io/openapitools/openapi-generator-cli:latest generate \
+
+DOCKER_IMAGE=docker.io/openapitools/openapi-generator-cli:latest-release
+
+docker image pull $DOCKER_IMAGE
+docker run --rm -v ${PWD}:/local $DOCKER_IMAGE generate \
     -i https://typed-pid-maker.datamanager.kit.edu/preview/v3/api-docs \
     -g python \
     -o /local \
