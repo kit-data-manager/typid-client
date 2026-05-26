@@ -1,7 +1,6 @@
 .github/workflows/python.yml
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/ActuatorApi.md
@@ -44,16 +43,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_actuator_api.py
-test/test_batch_record_response.py
-test/test_find_all200_response.py
-test/test_known_pid.py
-test/test_link.py
-test/test_pid_management_api.py
-test/test_pid_record.py
-test/test_pid_record_entry.py
-test/test_simple_pair.py
-test/test_simple_pid_record.py
-test/test_tabulator_pagination_format.py
-test/test_tabulator_pagination_format_known_pid.py
 tox.ini
