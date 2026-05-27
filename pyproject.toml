@@ -8,7 +8,7 @@ authors = [
 license = "Apache-2.0"
 readme = "README.md"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Typed PID Maker - RESTful API"]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 
 dependencies = [
   "urllib3>=2.1.0,<3.0.0",
@@ -37,6 +37,10 @@ dev = [
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+packages = ["pytypid", "pytypid_generated_client"]
 
 [tool.pylint.'MESSAGES CONTROL']
 extension-pkg-whitelist = "pydantic"
@@ -137,3 +141,6 @@ warn_return_any = true
 # This one is a catch-all flag for the rest of strict checks that are technically
 # correct but may not be practical
 extra_checks = true
+
+[flake8]
+max-line-length=99
