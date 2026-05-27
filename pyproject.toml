@@ -42,6 +42,9 @@ build-backend = "setuptools.build_meta"
 include-package-data = true
 packages = ["pytypid", "pytypid_generated_client"]
 
+[tool.uv]
+exclude-newer = "3 days"
+
 [tool.pylint.'MESSAGES CONTROL']
 extension-pkg-whitelist = "pydantic"
 
