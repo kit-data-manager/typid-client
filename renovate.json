@@ -6,5 +6,5 @@
   ],
   "minimumReleaseAge": "3 days",
   "prConcurrentLimit": 10,
-  "rangeStrategy": "replace"
+  "rangeStrategy": "bump"
 }
