@@ -700,7 +700,7 @@ requires-dist = [
     { name = "pydantic", specifier = ">=2.13.4,<3.0.0" },
     { name = "python-dateutil", specifier = ">=2.8.2,<3.0.0" },
     { name = "typing-extensions", specifier = ">=4.15.0,<5.0.0" },
-    { name = "urllib3", specifier = ">=2.1.0,<3.0.0" },
+    { name = "urllib3", specifier = ">=2.7.0,<3.0.0" },
 ]
 
 [package.metadata.requires-dev]
