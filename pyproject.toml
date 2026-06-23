@@ -35,12 +35,12 @@ dev = [
 
 
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.11.19,<0.12.0"]
+build-backend = "uv_build"
 
-[tool.setuptools]
-include-package-data = true
-packages = ["pytypid", "pytypid_generated_client"]
+[tool.uv.build-backend]
+module-name = ["pytypid", "pytypid_generated_client"]
+module-root = ""
 
 [tool.uv]
 exclude-newer = "3 days"
